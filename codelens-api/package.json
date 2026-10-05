@@ -1,0 +1,19 @@
+{
+  "name": "codelens-api",
+  "version": "1.0.0",
+  "description": "Backend do CodeLens AI — API de Code Review com IA rodando na Edge",
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "hono": "^4.7.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261001.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^4.0.0"
+  }
+}

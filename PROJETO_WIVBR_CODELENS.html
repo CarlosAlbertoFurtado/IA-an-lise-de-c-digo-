@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Projeto CodeLens WIVBR</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 40px; }
+        h1, h2, h3 { color: #2b6cb0; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #cbd5e0; padding: 12px; text-align: left; }
+        th { background-color: #edf2f7; }
+        code { background-color: #edf2f7; padding: 2px 6px; border-radius: 4px; color: #e53e3e; }
+        blockquote { border-left: 4px solid #4299e1; margin-left: 0; padding-left: 20px; background-color: #ebf8ff; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        const markdown = `
+# Projeto: CodeLens AI (Plataforma de Code Review Automatizado)
+
+## O que é o projeto?
+Uma aplicação web "End-to-End" focada em times de desenvolvimento. O usuário insere um trecho de código (ou o link de um repositório) e a aplicação utiliza IA para realizar um Code Review automatizado, apontando vulnerabilidades, complexidade ciclomática e sugerindo melhorias de clean code. Todo o histórico de análises é salvo no banco de dados.
+
+Esta é uma aplicação madura (nível B2B SaaS) que brilha aos olhos de Tech Leads porque resolve uma dor real de engenharia de software e usa exatamente 100% da stack pedida pela vaga.
+
+## Como ele cobre os requisitos da Vaga (A Stack WIVBR)
+
+| Tecnologia Vaga | Onde será aplicada no Projeto |
+| :--- | :--- |
+| **Svelte / SvelteKit** | Construção de todo o Front-end e rotas de renderização. |
+| **TailwindCSS** | Criação de uma interface web moderna, responsiva e com suporte a *Dark Mode*. |
+| **Hono + Cloudflare Workers** | O Back-end será uma API construída com Hono rodando "na Edge" (Cloudflare Workers), garantindo latência quase zero. |
+| **Drizzle ORM + PostgreSQL** | Comunicação com o banco de dados. Você pode usar o Neon (Postgres Serverless) integrado via Drizzle para salvar usuários, códigos enviados e os relatórios de IA. |
+| **Zod** | Validação rigorosa dos dados. Se o usuário enviar um payload vazio ou inválido, o Zod barra antes de bater no banco ou na IA. |
+| **Integrações com IA (Node/JS)** | Integração com a API da OpenAI (ou Claude) no seu worker Hono para ler o código e retornar o feedback estruturado em JSON. |
+
+---
+
+## Arquitetura do Projeto
+
+1.  **Frontend (O Rosto):** SvelteKit hospedado na Cloudflare Pages.
+2.  **Backend (O Cérebro):** Cloudflare Workers usando Hono.
+3.  **Banco de Dados (A Memória):** PostgreSQL (hospedado no Neon.tech) acessado via Drizzle ORM.
+4.  **IA (O Especialista):** OpenAI API invocada pelo backend.
+
+---
+
+## Passo a Passo de Implementação (Roadmap)
+
+### Fase 1: Setup e Fundação
+1.  Criar o projeto SvelteKit (\`npm create svelte@latest\`).
+2.  Configurar TailwindCSS.
+3.  Criar um projeto separado (ou monorepo) para o backend com Hono para rodar no Cloudflare Workers (\`npm create hono@latest\`).
+4.  Configurar um banco PostgreSQL gratuito no Neon.tech e configurar o Drizzle ORM no backend.
+
+### Fase 2: Banco de Dados e API (Backend)
+1.  Criar o Schema com Drizzle:
+    *   Tabela \`users\` (id, email, nome).
+    *   Tabela \`reviews\` (id, user_id, code_snippet, ai_feedback, created_at).
+2.  Criar as rotas no Hono:
+    *   \`POST /api/reviews\`: Recebe o código, valida usando **Zod**, manda para a IA, salva no banco com **Drizzle**, e retorna o resultado.
+    *   \`GET /api/reviews\`: Lista o histórico de códigos analisados de um usuário.
+
+### Fase 3: Integração com IA
+1.  Na rota de \`POST /api/reviews\`, usar a SDK da OpenAI (ou apenas \`fetch\`) para enviar um prompt:
+    *   *"Atue como um Engenheiro de Software Sênior. Revise o código a seguir e retorne um JSON com 3 campos: score (0 a 10), vulnerabilities (lista), suggestions (lista)".*
+2.  Fazer o parse da resposta da IA e salvar os dados estruturados no PostgreSQL.
+
+### Fase 4: O Frontend (SvelteKit)
+1.  Criar a página inicial (Landing Page bonitona com Tailwind).
+2.  Criar um painel (Dashboard) onde o usuário cola o código num campo de texto.
+3.  Fazer a requisição para a sua API Hono e exibir os resultados com cards modernos.
+4.  Criar uma página de "Histórico" para listar análises antigas (fazendo \`fetch\` na sua API).
+
+### Fase 5: Refinamento (O que garante a contratação)
+*   **Tratamento de Erros:** O que acontece se a IA demorar? E se a API da OpenAI cair? Mostre *Loaders* e tratamentos de erro adequados.
+*   **Acessibilidade:** Use as tags HTML corretas (semantic HTML) e garanta contraste.
+*   **Documentação:** Crie um \`README.md\` espetacular explicando a arquitetura e como rodar o projeto localmente.
+        `;
+        document.getElementById('content').innerHTML = marked.parse(markdown);
+    </script>
+</body>
+</html>

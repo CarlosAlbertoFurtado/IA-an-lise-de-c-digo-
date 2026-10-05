@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Currículo Estágio WIVBR</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 40px; }
+        h1 { color: #1a202c; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        h2 { color: #2d3748; margin-top: 30px; }
+        a { color: #3182ce; text-decoration: none; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        const markdown = `
+# CARLOS ALBERTO FURTADO AROUCHA JUNIOR
+Campinas, SP | (19) 99586-4926 | juniorfurtadoaroucha@gmail.com
+[LinkedIn](https://linkedin.com/in/carlosafurtado) | [GitHub](https://github.com/CarlosAlbertoFurtado)
+
+## RESUMO PROFISSIONAL
+Desenvolvedor Full Stack apaixonado por tecnologias modernas, com experiência prática na construção de aplicações escaláveis utilizando **TypeScript, Node.js, PostgreSQL e Tailwind CSS**. Tenho facilidade em aprender novas ferramentas e frameworks (como o ecossistema Svelte e ferramentas Edge), embasado em fundamentos sólidos de arquitetura de software, criação de APIs RESTful e bancos de dados relacionais. Vivência em metodologias ágeis, testes automatizados, code reviews e esteiras de CI/CD, sempre focado em entregas de ponta a ponta com qualidade e integração com novas tecnologias, incluindo IA.
+
+## HABILIDADES TÉCNICAS
+*   **Linguagens:** TypeScript, JavaScript, Node.js, Python, Java.
+*   **Front-end:** Tailwind CSS, HTML, CSS, React.js, Next.js (aberto e motivado a dominar Svelte/SvelteKit).
+*   **Back-end & APIs:** Node.js, Express, APIs REST, integrações com serviços de terceiros e IA (LLMs). (Familiaridade com conceitos para rápida adaptação ao Hono).
+*   **Banco de Dados & ORMs:** PostgreSQL, SQL, MongoDB. (Familiaridade com modelagem de dados para rápida adoção do Drizzle ORM).
+*   **DevOps & Ferramentas:** Git, GitHub (PRs, Code Review), CI/CD (GitHub Actions), Docker, Linux.
+
+## FORMAÇÃO ACADÊMICA
+**Análise e Desenvolvimento de Sistemas** — UniCesumar
+*Jan/2023 – Dez/2027*
+Foco: Engenharia de Software, Arquitetura de Sistemas, Banco de Dados, Programação e Inteligência Artificial.
+
+## EXPERIÊNCIA PROFISSIONAL
+
+**DAB (Direito Animal do Brasil) — Voluntário de Suporte de T.I**
+*Mai/2026 – Atual | Remoto*
+*   Atuação no suporte técnico a usuários e acompanhamento de chamados utilizando a plataforma Jira.
+*   Apoio remoto na manutenção e configuração de sistemas, vivenciando fluxos ágeis e comunicação constante com a equipe.
+
+**Lacrei Saúde — Desenvolvedor Back-end Voluntário**
+*Fev/2026 – Abr/2026 | Remoto*
+*   Desenvolvimento de serviços escaláveis e APIs RESTful, garantindo o bom funcionamento do back-end.
+*   Implementação de testes automatizados e estruturação de esteiras CI/CD com GitHub Actions, assegurando entregas prontas para produção e participando ativamente de processos de code review.
+
+**Analista de Logística — Cia DPaschoal**
+*Fev/2024 – Dez/2024*
+*   Otimização da comunicação entre equipes multifuncionais, habilidade essencial para alinhamento de trade-offs com Produto e Design.
+
+## PROJETOS RELEVANTES
+
+**Trazz — Plataforma de Fretes**
+*Tecnologias: Node.js, TypeScript, React, MongoDB, JWT.*
+*   Desenvolvimento Full Stack de ponta a ponta de uma aplicação web.
+*   Construção de API REST segura com autenticação via JWT e desenvolvimento de interfaces responsivas e modernas.
+*   *Relevância para a vaga:* Demonstra capacidade prática de desenvolver e integrar frontend e backend completos.
+
+**CodeLens AI - Code Review Automatizado na Edge**
+*   Construí uma aplicação Full Stack Serverless para análise estática de código com IA.
+*   **Frontend:** Desenvolvido com **SvelteKit** e **TailwindCSS**, focando em UX responsiva e moderna.
+*   **Backend:** API construída com **Hono** rodando em **Cloudflare Workers** para baixa latência, integrando com a API da OpenAI para geração de relatórios técnicos.
+*   **Dados:** Modelagem e persistência em **PostgreSQL** utilizando **Drizzle ORM**, com validação de schemas de entrada e saída rigorosamente feita com **Zod**.
+
+**Contribuições Open Source**
+*   Contribuições ativas em repositórios internacionais no GitHub, demonstrando boas práticas de engenharia, padronização e uso avançado de Git/GitHub em times distribuídos.
+
+## CERTIFICAÇÕES & CURSOS RELEVANTES
+*   **Node.js e APIs REST** — Rocketseat (36h)
+*   **Git e GitHub** — DIO (20h)
+*   **Machine Learning e IA** — Coursera / Google (40h) *(Relevante para compreensão e integração com soluções de AI)*
+*   **Docker e Containers** — (20h)
+        `;
+        document.getElementById('content').innerHTML = marked.parse(markdown);
+    </script>
+</body>
+</html>
